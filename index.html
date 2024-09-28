@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Matt Cannon">
+        <meta name="contact" content="mc@mattcannon.design">
+        <meta name="description" content="A fun seasonal countdown timer to match your seasonal mood">
+        <meta name="keywords" content="codepenchallenge, cpc-timers, countdown, timer">
+        <meta name="last-modified" content="2024-09-08">
+        <meta http-equiv="Content-Language" content="en">
+        <meta name="generator" content="HTML5, CSS3, JavaScript">
+        <title>Seasonal Timer</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Seasonal Timer ⏰❄️</title>
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay"></div>
+      <div class="main-container" id="mainContainer">
+        <div class="countdown-container">
+          <svg class="countdown-svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="calm-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <!-- Default Gradient for initial load -->
+                <stop offset="0%" style="stop-color:#9a4e2b" />
+                <stop offset="50%" style="stop-color:#693d1e" />
+                <stop offset="100%" style="stop-color:#3b2416" />
+              </linearGradient>
+            </defs>
+            <circle class="countdown-circle" cx="50" cy="50" r="45"></circle>
+          </svg>
+          <div class="countdown-text" id="countdown">00:00</div>
+        </div>
+        <div class="countdown-input-wrapper">
+          <input type="number" class="countdown-input" id="timeInput" placeholder="Enter Seconds" min="1">
+          <div class="input-arrows">
+            <i class="fas fa-chevron-up" onclick="incrementTime()"></i>
+            <i class="fas fa-chevron-down" onclick="decrementTime()"></i>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="countdown-button" onclick="startCountdown()" id="startButton">
+            <i class="fa-solid fa-hourglass-start" id="startIcon"></i> Start
+            <span class="tooltip">Enter Seconds</span>
+          </button>
+          <button class="countdown-button" onclick="stopCountdown()" id="stopButton" disabled>
+            <i class="fa-solid fa-hourglass-start" id="stopIcon"></i> Stop
+          </button>
+        </div>
+        <div class="season-icons">
+          <i class="fas fa-snowflake season-icon" onclick="changeSeason('winter')" id="winterIcon"></i>
+          <i class="fas fa-seedling season-icon" onclick="changeSeason('spring')" id="springIcon"></i>
+          <i class="fas fa-sun season-icon" onclick="changeSeason('summer')" id="summerIcon"></i>
+          <i class="fas fa-leaf season-icon active" onclick="changeSeason('fall')" id="fallIcon"></i>
+        </div>
+      </div>
+      <script src="./main.js"></script>
+
+</body>
+</html>

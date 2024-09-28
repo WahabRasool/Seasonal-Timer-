@@ -1,0 +1,230 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1000;
+  background-size: cover;
+  filter: blur(5px);
+  transform: scale(1.1);
+  opacity: 0; /* Initially hide the video */
+  transition: opacity 1s ease-in-out; /* Smooth transition for fade-in effect */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -999;
+}
+
+body {
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 210px;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateY(7px) scale(1);
+  transition: transform 0.3s ease;
+}
+
+.countdown-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.countdown-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.countdown-circle {
+  fill: none;
+  stroke: url(#calm-gradient);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.countdown-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.countdown-input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.countdown-input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #ff69b4;
+  color: #fff;
+  padding: 10px 30px 10px 10px;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.countdown-input::-webkit-inner-spin-button,
+.countdown-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.countdown-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-arrows {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-arrows i {
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 0px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.countdown-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  position: relative;
+}
+
+.countdown-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.countdown-button i {
+  margin-right: 5px;
+  transition: transform 0.5s;
+}
+
+.countdown-button i.flipped {
+  transform: rotate(180deg);
+}
+
+.season-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.season-icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.season-icon.active {
+  color: inherit;
+}
+
+@keyframes moveGradient {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -283;
+  }
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+.countdown-button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
